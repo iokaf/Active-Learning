@@ -1,0 +1,71 @@
+[general]
+address = "10.235.15.252/"
+output-directory = "./outputs"
+
+[labels]
+names = ["Type 1", "Type 2", "Type 3", "Type 4"]
+mutually-exclusive = true
+
+[label-studio]
+token = "e0e813829641b9f19015df132a3f4e17bbc2f30b"
+port = 8080
+project-id = 153
+results-directory-name = "label-studio-results"
+
+[image-server]
+port = 8050
+directory = "./server_images"
+
+[model]
+name="resnet18"
+pretrained=true
+
+[training]
+verbose=true
+
+device="cuda"
+max-epochs=2
+
+learning-rate=0.001
+use-scheduler=true
+
+train-batch-size=32
+valid-batch-size=32
+test-batch-size=32
+
+train-workers=0
+valid-workers=0
+
+min-checkpoint-epoch = 1
+checkpoints-directory-name = "checkpoints"
+
+[data]
+valid-folds = [0, 1]
+
+image-height = 224
+image-width = 224
+mean = [0.485, 0.456, 0.406]
+std = [0.229, 0.224, 0.225]
+
+[data-inclusion]
+use-all-videos = true
+
+path-to-video-names-file = "./data/video_names.txt"
+number-of-videos-each-iteration = 10
+video-frames-json-directory = "./data/video_frames_jsons"
+one-every-n-frames = 10
+
+all-image-data-json-path = "/media/yanny/Extreme SSD/Active-Learning/notebooks/data.json"
+
+[predictions]
+batch-size = 32
+workers = 0
+save-predictions = true
+activation = "softmax"
+round-digits = 5
+
+[task-selection]
+method = "diverse"
+save-selection-results = true
+number-of-tasks-per-label = 10
+save-results = true

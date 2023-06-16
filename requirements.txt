@@ -1,0 +1,11 @@
+PyQt5
+numpy
+pandas
+albumentations
+torch
+tqdm
+timm
+label-studio = 1.6.0
+fastapi
+gunicorn
+uvicorn
